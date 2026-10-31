@@ -393,16 +393,16 @@ export const POSCounter: React.FC = () => {
               {STORE.gstNote}
             </div>
 
-            <button
-              onClick={() => {
-                printBill();
-                setReceiptOrder(null);
-              }}
-              className="btn btn-primary w-full font-sans"
-            >
-              <Printer className="h-4 w-4" />
-              Print invoice
-            </button>
+<button
+                onClick={() => {
+                  printBill();
+                  void setTimeout(() => setReceiptOrder(null), 1000);
+                }}
+                className="btn btn-primary w-full font-sans"
+              >
+                <Printer className="h-4 w-4" />
+                Print invoice
+              </button>
           </div>
         </div>
       )}
