@@ -34,7 +34,7 @@ jobs:
           npx wrangler whoami
           
       - name: Deploy to Cloudflare
-        uses: cloudflare/wrangler-action@v1
+        uses: cloudflare/wrangler-action@3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
