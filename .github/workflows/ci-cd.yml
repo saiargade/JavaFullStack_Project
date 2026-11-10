@@ -30,23 +30,18 @@ jobs:
         run: npm run build
 
       - name: Configure Wrangler
-        run: |
-          npx wrangler whoami || echo "Wrangler config issue - checking secrets"
-          
+        run: npx wrangler whoami
+
       - name: Verify Secrets
         run: |
-          echo "CF_API_TOKEN present: ${secrets.CF_API_TOKEN}"
-          echo "CF_ACCOUNT_ID present: ${secrets.CF_ACCOUNT_ID}"
-          
-- name: Deploy to Cloudflare
-        uses: actions/cloudflare/wrangler-action@v3
+          echo "CF_API_TOKEN present"
+          echo "CF_ACCOUNT_ID present"
+
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-      # Force fresh action download - bypass cache
-      - name: Force Action ReDownload
-        run: |
-          echo "Action download will proceed fresh"
         env:
           WORKER_NAME: pashufeed-pro
 
