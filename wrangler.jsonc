@@ -1,11 +1,9 @@
 {
   "name": "pashufeed-pro",
+  "compatibility_date": "2026-11-10",
   "compatibility_flags": ["nodejs_compat"],
-  "d1_bindings": {
-    "DB": "pashufeed"
-  },
-  "ai": {
-    "binding": "AI",
-    "model_name": "google_genai"
+  "main": "src/index.ts",
+  "d1": {
+    "bindings": ["DB"]
   }
 }
