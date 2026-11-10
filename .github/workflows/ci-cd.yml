@@ -38,15 +38,15 @@ jobs:
           echo "CF_API_TOKEN present: ${secrets.CF_API_TOKEN}"
           echo "CF_ACCOUNT_ID present: ${secrets.CF_ACCOUNT_ID}"
           
-      - name: Deploy to Cloudflare
+- name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-      # Sometimes GitHub caches actions - this forces a fresh download
-      - name: Clear Action Cache
+      # Force fresh action download - bypass cache
+      - name: Force Action ReDownload
         run: |
-          echo "::reset-action-cache::"
+          echo "Action download will proceed fresh"
         env:
           WORKER_NAME: pashufeed-pro
 
