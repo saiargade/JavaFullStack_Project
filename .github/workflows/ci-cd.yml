@@ -29,6 +29,12 @@ jobs:
       - name: Build frontend
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          ls -la frontend/dist/
+          echo "---"
+          ls frontend/dist/index.html 2>/dev/null || echo "No index.html found"
+
       - name: Configure Wrangler
         run: npx wrangler whoami
 
@@ -42,6 +48,9 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          # Explicitly specify the project name and directory
+          # This helps wrangler find the correct project configuration
+          working-directory: .
         env:
           WORKER_NAME: pashufeed-pro
 
