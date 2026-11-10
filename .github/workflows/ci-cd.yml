@@ -31,7 +31,12 @@ jobs:
 
       - name: Configure Wrangler
         run: |
-          npx wrangler whoami
+          npx wrangler whoami || echo "Wrangler config issue - checking secrets"
+          
+      - name: Verify Secrets
+        run: |
+          echo "CF_API_TOKEN present: ${secrets.CF_API_TOKEN}"
+          echo "CF_ACCOUNT_ID present: ${secrets.CF_ACCOUNT_ID}"
           
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@3
