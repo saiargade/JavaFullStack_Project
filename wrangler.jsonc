@@ -5,6 +5,6 @@
   "main": "backend/server/index.ts",
   "workers_dev": true,
   "routes": [
-    { "pattern": "https://pashufeed-pro.saiargade69.workers.dev/*", "script": "pashufeed-pro" }
+    { "pattern": "https://pashufeed-pro.saiargade69.workers.dev/*", "custom_domain": false }
   ]
 }
