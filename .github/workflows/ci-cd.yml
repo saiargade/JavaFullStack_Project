@@ -48,9 +48,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          # Explicitly specify the project name and directory
-          # This helps wrangler find the correct project configuration
-          working-directory: .
+          workingDirectory: .
         env:
           WORKER_NAME: pashufeed-pro
 
