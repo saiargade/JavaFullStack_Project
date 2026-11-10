@@ -3,5 +3,10 @@
   "compatibility_date": "2026-11-10",
   "compatibility_flags": ["nodejs_compat"],
   "main": "backend/server/index.ts",
-  "workers_dev": true
+  "workers_dev": true,
+  "assets": {
+    "directory": "./frontend/dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  }
 }
