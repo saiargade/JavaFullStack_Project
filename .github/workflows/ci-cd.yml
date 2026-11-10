@@ -43,6 +43,10 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
+      # Sometimes GitHub caches actions - this forces a fresh download
+      - name: Clear Action Cache
+        run: |
+          echo "::reset-action-cache::"
         env:
           WORKER_NAME: pashufeed-pro
 
