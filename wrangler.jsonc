@@ -2,5 +2,5 @@
   "name": "pashufeed-pro",
   "compatibility_date": "2026-11-10",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "src/index.ts"
+  "main": "backend/server/index.ts"
 }
