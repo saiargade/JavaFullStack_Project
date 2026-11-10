@@ -3,5 +3,8 @@
   "compatibility_date": "2026-11-10",
   "compatibility_flags": ["nodejs_compat"],
   "main": "backend/server/index.ts",
-  "workers_dev": true
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "https://pashufeed-pro.saiargade69.workers.dev/*", "script": "pashufeed-pro" }
+  ]
 }
