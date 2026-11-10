@@ -14,11 +14,11 @@ export default defineConfig(() => {
     },
     server: {
       port: 3000,
-      allowedHosts: ['utilization-labour-mentioned-fields.trycloudflare.com'],
       proxy: {
         '/api': {
-          target: `http://localhost:${process.env.PORT ?? 3001}`,
+          target: 'http://127.0.0.1:8787',
           changeOrigin: true,
+          secure: false,
         },
       },
     },

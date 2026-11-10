@@ -1,18 +1,17 @@
 {
   "name": "pashufeed-pro",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "description": "Cattle feed shop and farm management platform for dairy farmers and shop owners.",
   "type": "module",
   "scripts": {
     "dev": "concurrently -n web,api -c cyan,green \"vite --config frontend/vite.config.ts\" \"npm:server\"",
     "server": "tsx watch backend/server/index.ts",
-    "build": "npm run build:api && vite build --config frontend/vite.config.ts",
-    "build:api": "node scripts/build-api.mjs",
+    "build": "vite build --config frontend/vite.config.ts",
     "preview": "vite preview --config frontend/vite.config.ts",
     "lint": "tsc --noEmit",
-    "db:init": "tsx backend/server/migrate.ts",
-    "db:seed": "tsx backend/server/seed.ts"
+    "cf:deploy": "wrangler publish",
+    "cf:dev": "wrangler dev"
   },
   "dependencies": {
     "@google/genai": "^2.16.0",
@@ -49,6 +48,8 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "@cloudflare/d1": "^1.0.0",
+    "wrangler": "^3.80.0"
   }
 }

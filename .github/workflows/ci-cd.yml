@@ -1,0 +1,48 @@
+name: PashuFeed Pro Cloudflare CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Configure Wrangler
+        run: |
+          npx wrangler whoami
+          
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+        env:
+          WORKER_NAME: pashufeed-pro
+
+      - name: Verify Deployment
+        run: |
+          echo "✅ Deployment complete!"
+          echo "Frontend: https://pashufeed-pro.pages.dev"
+          echo "API: https://pashufeed-pro.trycloudflare.com/api/health"

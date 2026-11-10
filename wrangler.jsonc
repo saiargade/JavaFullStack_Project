@@ -1,0 +1,11 @@
+{
+  "name": "pashufeed-pro",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_bindings": {
+    "DB": "pashufeed"
+  },
+  "ai": {
+    "binding": "AI",
+    "model_name": "google_genai"
+  }
+}
